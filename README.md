@@ -1,7 +1,7 @@
-CrowBox
-=======
+CrowBox (UNOFFICIAL REPO)
+=========================
 
-This is a repository of resources for the [CrowBox project](http://www.thecrowbox.com).
+This is an unofficial repository of resources for the [CrowBox project](http://www.thecrowbox.com). IT IS NOT OFFICIAL, and reflects only the changes I've made. If you want, check out the `original` branch for the original resources as they were when this repo was created.
 
 
 ## About the Project
@@ -25,15 +25,6 @@ Based on established Skinnerian training principles, the action of the device is
 - Stage 4: Food available on coin deposit
 
 So far the CrowBox project has been shown to work with captive crows. Now we're releasing the open sourced designs of the new CrowBox so anyone can try it with their own wild corvid populations!
-
-
-## Get Started
-
-Follow our [wiki guide] to make or order the housing, order the electronics, and use our build videos to make your own.
-
-The design of the CrowBox is open source, so you're free to make your own, edit the files, and contribute to the project. Total cost will depend on where you buy your parts, plus shipping, but we worked hard to keep it below USD $100.
-
-Once your CrowBox is built, choose your location and start seeding your local corvid community. Need help? Access the Google Forum, check out the wiki, and/or join the mailing list!
 
 
 ## Project Objectives
