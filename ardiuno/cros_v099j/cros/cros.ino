@@ -65,19 +65,20 @@ void setup() {
 
 #if defined(CROS_NETWORK_SSID)
   // Make sure we can connect.
-  if (WiFi.status() == WL_NO_MODULE) CrOS::Shutdown("Error: no WiFi module.");
+  if (WiFi.status() == WL_NO_MODULE) CrOS::Shutdown("Error: no WiFi module found.");
 
-  kernel.Register([](CrOS::event eventName) {
+  kernel.Register([](CrOS::event eventType) {
     if (WiFi.status() != WL_CONNECTED) return;
 
-    WiFiSSLClient client;
-    if (client.connect(CROS_API_HOST, 443)) {            
+    WiFiClient client;
+    if (client.connect(CROS_API_HOST, 80)) {
       char data[255];
-      sprintf(data, CROS_API_REQUEST, eventName, CROS_API_TOKEN, CROS_API_HOST);
+      sprintf(data, CROS_API_REQUEST, eventType, CROS_API_TOKEN, CROS_API_HOST);
       client.println(data);
-      CrOS::Log(data);
+      client.println();
 
       delay(100);
+      while (client.available()) { char c = client.read(); }
       client.stop();
     } else {
       char message[100];

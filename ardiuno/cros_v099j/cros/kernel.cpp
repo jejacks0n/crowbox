@@ -37,7 +37,7 @@ namespace CrOS {
 
   Kernel::Kernel() {}
 
-  void Kernel::Register(void (*handler)(event eventName)) {
+  void Kernel::Register(void (*handler)(event eventType)) {
     m_eventHandlers[++m_eventHandlersLen] = handler;
   }
 
@@ -115,9 +115,6 @@ namespace CrOS {
 
   void Kernel::Reward() {
     SetLidPosition(0);
-
-    // TODO: We're not bothering to handle multiple coins at this point.
-
     m_initCloseBasketAt = millis() + CROS_BASKET_REWARD_DURATION;
   };
 
@@ -132,8 +129,8 @@ namespace CrOS {
     pinMode(CROS_OUTPUT_PIN_RESET, OUTPUT);
   }
 
-  void Kernel::ProcessEvent(event eventName) {
-    switch (eventName) {
+  void Kernel::ProcessEvent(event eventType) {
+    switch (eventType) {
       case COIN_ACTIVATED:
         Log("Event: COIN_ACTIVATED");
         if (currentTrainingPhase > 2) Reward();
@@ -147,7 +144,7 @@ namespace CrOS {
         break;
     }
   
-    for (unsigned char i = 0; i <= m_eventHandlersLen; ++i) m_eventHandlers[i](eventName);
+    for (unsigned char i = 0; i <= m_eventHandlersLen; ++i) m_eventHandlers[i](eventType);
   }  
 
   bool Kernel::InputFrom(const unsigned char pin, const bool waitForRelease = false) {

@@ -51,5 +51,6 @@
 //#define CROS_API_HOST "" // this would be "www.corvusludus.live"
 //#define CROS_API_TOKEN ""
 //#define CROS_API_REQUEST "HEAD /log_event?type=%i&token=%s HTTP/1.1\nHost: %s\nConnection: close\n\n"
+#define CROS_API_REQUEST "HEAD /event?type=%i&token=%s HTTP/1.1\r\nHost: %s\r\nConnection: close\r\nUser-Agent: CrOS/0.99j"
 
 #endif // CROS_CONSTANTS_H
