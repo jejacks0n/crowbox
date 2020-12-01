@@ -1,0 +1,17 @@
+{
+  "name": "crowbox-server",
+  "version": "0.99",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "12.17.x"
+  },
+  "dependencies": {
+    "bufferutil": "^4.0.2",
+    "express": "^4.17.1",
+    "utf-8-validate": "^5.0.3",
+    "ws": "^7.4.0"
+  }
+}
