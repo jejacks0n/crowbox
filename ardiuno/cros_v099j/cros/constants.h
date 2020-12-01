@@ -36,20 +36,20 @@
 
 // Basket and servo behavior. These define an important safety feature which
 // closes the lid slowly in a series of small steps. This ensures visitors have
-// plenty of time before there's any danger of getting one of their parts caught.
+// plenty of time before there's any danger of getting one of their parts
+// caught.
 //
 // Think carefully before changing these.
 #define CROS_BASKET_REWARD_DURATION 15000
 #define CROS_BASKET_CLOSE_STEP_DURATION 1500
 
-//=============================================================================
-// Wifi support...
-//=============================================================================
+// WiFi support is an optional configuration. If you have a Arduino Uno WiFi
+// Rev 2 you might want to configure and turn these features on.
 #undef CROS_NETWORK_SSID
-#define CROS_NETWORK_SSID ""
-#define CROS_NETWORK_PASS ""
-#define CROS_API_HOST ""
-#define CROS_API_TOKEN ""
-#define CROS_API_REQUEST "HEAD /log_event?type=%i&token=%s HTTP/1.1\nHost: %s\nConnection: close\n\n"
+//#define CROS_NETWORK_SSID ""
+//#define CROS_NETWORK_PASS ""
+//#define CROS_API_HOST "" // this would be "www.corvusludus.live"
+//#define CROS_API_TOKEN ""
+//#define CROS_API_REQUEST "HEAD /log_event?type=%i&token=%s HTTP/1.1\nHost: %s\nConnection: close\n\n"
 
 #endif // CROS_CONSTANTS_H

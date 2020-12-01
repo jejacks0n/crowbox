@@ -61,15 +61,17 @@ unsigned long lastConnectionAttemptAt = 0;
 // Called once by the Arduino system, after initial boot up or when the sketch
 // is uploaded. We pass through to the CrOS Kernel setup method.
 void setup() {
+  kernel.Boot();
+
+#if defined(CROS_NETWORK_SSID)
   // Make sure we can connect.
   if (WiFi.status() == WL_NO_MODULE) CrOS::Shutdown("Error: no WiFi module.");
 
-  kernel.Boot();
   kernel.Register([](CrOS::event eventName) {
     if (WiFi.status() != WL_CONNECTED) return;
 
-    WiFiClient client;
-    if (client.connect(CROS_API_HOST, 80)) {            
+    WiFiSSLClient client;
+    if (client.connect(CROS_API_HOST, 443)) {            
       char data[255];
       sprintf(data, CROS_API_REQUEST, eventName, CROS_API_TOKEN, CROS_API_HOST);
       client.println(data);
@@ -82,7 +84,8 @@ void setup() {
       sprintf(message, "Error: no connection to %s.", CROS_API_HOST);
       CrOS::Log(message);
     }
-  });      
+  });
+#endif // CROS_NETWORK_SSID
 }
 
 // Called continuously by the Arduino system. Allow the CrOS Kernel to process
@@ -90,6 +93,7 @@ void setup() {
 void loop() {
   kernel.Loop();
 
+#if defined(CROS_NETWORK_SSID)
   int status = WiFi.status();
   if (lastConnectionAttemptAt == 0 && status != WL_CONNECTED) {
     lastConnectionAttemptAt = millis();
@@ -103,6 +107,7 @@ void loop() {
       connect();
     }
   }
+#endif // CROS_NETWORK_SSID
 }
 
 void connect() {
