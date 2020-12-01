@@ -17,7 +17,7 @@
 // CROS_SERIAL_BAUD_RATE should be #undef when compiling for a CrowBox that's
 // going to be deployed -- for performance and optimization reasons.
 #undef CROS_SERIAL_BAUD_RATE
-#define CROS_SERIAL_BAUD_RATE 9600
+//#define CROS_SERIAL_BAUD_RATE 9600
 
 // Pin apportioning. The following assumes an Arduino board, and these may need
 // to be changed when porting this code to run on another board type, or when
