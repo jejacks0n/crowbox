@@ -1,0 +1,19 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A CrowBox Stream</title>
+</head>
+<body>
+
+<!--<iframe type="text/html" frameborder="0" width="480" height="394" src="//video.nest.com/embedded/live/ABC123?autoplay=1" allowfullscreen></iframe>-->
+<div id="event-display">Waiting for event...</div>
+
+<script>
+  const el = document.getElementById('event-display');
+
+  const ws = new WebSocket(location.origin.replace(/^http/, 'ws'));
+  ws.onmessage = (event) => el.innerHTML = 'Last event logged: ' + event.data;
+</script>
+</body>
+</html>
